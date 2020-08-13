@@ -1,0 +1,63 @@
+﻿<Window x:Class="Polar.Charts.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:charts="clr-namespace:Visiblox.Charts;assembly=Visiblox.Charts"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <!--<ColumnDefinition Width="*" />-->
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <charts:Chart x:Name="chart" LegendVisibility="Collapsed">
+            <charts:Chart.Series>
+                <charts:LineSeries>
+                    <charts:LineSeries.DataSeries>
+                        <charts:BindableDataSeries ItemsSource="{Binding}" XValueBinding="{Binding X}" YValueBinding="{Binding Y}" />
+                    </charts:LineSeries.DataSeries>
+                </charts:LineSeries>
+            </charts:Chart.Series>
+            <charts:Chart.XAxis>
+                <charts:LinearAxis ShowAxis="False" />
+            </charts:Chart.XAxis>
+            <charts:Chart.YAxis>
+                <charts:LinearAxis ShowAxis="False" />
+            </charts:Chart.YAxis>
+        </charts:Chart>
+        <charts:Chart Grid.Column="1" LegendVisibility="Collapsed" Visibility="Collapsed">
+            <charts:Chart.Series>
+                <charts:LineSeries>
+                    <charts:LineSeries.DataSeries>
+                        <charts:BindableDataSeries ItemsSource="{Binding}" XValueBinding="{Binding Theta}" YValueBinding="{Binding R}" />
+                    </charts:LineSeries.DataSeries>
+                </charts:LineSeries>
+            </charts:Chart.Series>
+            <charts:Chart.XAxis>
+                <charts:LinearAxis ShowAxis="False" />
+            </charts:Chart.XAxis>
+            <charts:Chart.YAxis>
+                <charts:LinearAxis ShowAxis="False" />
+            </charts:Chart.YAxis>
+        </charts:Chart>
+        <charts:RadialChart x:Name="radialChart" DrawingMode="Circular" Grid.Column="2" LegendVisibility="Collapsed">
+            <charts:RadialChart.Series>
+                <charts:RadialLineSeries>
+                    <charts:RadialLineSeries.DataSeries>
+                        <charts:BindableDataSeries ItemsSource="{Binding}" XValueBinding="{Binding Theta}" YValueBinding="{Binding R}" />
+                    </charts:RadialLineSeries.DataSeries>
+                </charts:RadialLineSeries>
+            </charts:RadialChart.Series>
+            <charts:RadialChart.XAxis>
+                <charts:RadialLinearAxis ShowLabels="False">
+                </charts:RadialLinearAxis>
+            </charts:RadialChart.XAxis>
+            <charts:RadialChart.YAxis>
+                <charts:RadialLinearAxis ShowAxis="False">
+                </charts:RadialLinearAxis>
+            </charts:RadialChart.YAxis>
+        </charts:RadialChart>
+    </Grid>
+</Window>
